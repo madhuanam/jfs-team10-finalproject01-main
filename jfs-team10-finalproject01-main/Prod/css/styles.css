@@ -1,0 +1,27 @@
+* {
+    margin: 0px;
+    padding: auto;
+}
+
+.jumbotron {
+    background-color: teal;
+    height: 60px;
+    width: 100%;
+    font-size: 3.1em;
+}
+
+.align {
+    width: 100%;
+}
+
+.card {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.submitBtn {
+    color: white;
+    background-color: teal;
+    margin-top: 15px;
+    width: 25%;
+}

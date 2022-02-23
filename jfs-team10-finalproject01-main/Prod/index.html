@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Task Manager</title>
+    <meta name="description" content="A Simple Task Manager">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container-fluid">
+        <div class="display-4 jumbotron text-white rounded">
+            Task Manager
+        </div>
+        <br><br>
+        <form id="inputForm" class="align">
+            <div class="form-row">
+                <div class="form-col-6">
+                    <div class="form-group">
+                        <label for="taskName">Task Name</label>
+                        <input type="text" class="form-control" id="taskName">
+
+                   </div>
+		    <div id="taskNameAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+			      Task Name is required
+		    </div>
+                </div>
+                <div class="form-col-6">
+                    <div class="form-group">
+                        <label for="taskDesc">Task Description</label>
+                        
+                        <input type="text-area" class="form-control" id="taskDesc">
+                    </div>
+		    <div id="taskDescAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+			      Task Description is required
+		    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-col-6">
+                    <div class="form-group">
+                        <label for="assignedTo">Assigned To</label>
+                        <select form="inputForm" name="Assigned To" id="assignedTo" class="form-control">
+                            <option value="" selected>Choose...</option>
+                            <option value="Chris Hendrik">Chris Hendrik</option>
+                            <option value="Madhu Anam">Madhu Anam</option>
+                            <option value="Azmuddin Zafari">Azmuddin Zafari</option>
+                        </select>
+                    </div>
+		    <div id="assignedToAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+			      Assigned To is required
+		    </div>
+                </div>
+                <div class="form-col-6">
+                    <div class="form-group">
+                        <label for="dueDate">Due Date</label>
+                        <input type="date" class="form-control" id="dueDate">
+                    </div>
+		    <div id="dueDateAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+			      Due Date is required
+		    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-col-6">
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select form="inputForm" name="Status" id="status" class="form-control">
+                            <option value="" selected>Choose...</option>
+                            <option value="To Do">To Do</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Review">Review</option>
+                            <option value="Done">Done</option>
+                        </select>
+                    </div>
+		    <div id="statusAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+			      Status is required
+		    </div>
+                </div>
+            </div>
+            <div class="form-col-6">
+                <button id="addTaskBtn" type="button" class="form-group btn submitBtn">Add New Task</button>
+            </div>
+
+    </div>
+    <br><br>
+    <div class="container-fluid">
+        <div class="display-4 jumbotron text-white rounded">Tasks
+        </div>
+
+	<ul class="list-group">
+        <div class="row mt-4 mb-3 ml-1 rounded" id="taskListGroupId">
+	     <!--- <li class="list-group-item">	
+              <div class="col pl-40">
+                        <div class="card border-primary">
+                                <div class="card-body">
+                                        <h4 class="card-title">TaskName1</h4>
+                                        <p class="card-text">Task Description1</p>
+                                        <p class="card-text">AssignedTo</p>
+                                        <p class="card-text">DueDate</p>
+                                        <p class="card-text">Status</p>
+					<input type="button" id="markDoneBtn" class="done-button" value="Mark Done">
+                                </div>
+                        </div>      
+              </div> 
+	      </li>
+	      <li class="list-group-item">	
+              <div class="col pl-40">
+                        <div class="card border-primary">
+                                <div class="card-body" id="1">
+                                        <h4 class="card-title">TaskName1</h4>
+                                        <p class="card-text">Task Description1</p>
+                                        <p class="card-text">AssignedTo</p>
+                                        <p class="card-text">DueDate</p>
+                                        <p class="card-text">Status</p>
+					<input type="button" id="markDoneBtn" class="done-button" value="Mark Done">
+                                </div>
+                        </div>      
+              </div> 
+	      </li>
+	      <li class="list-group-item">	
+              <div class="col pl-40">
+                        <div class="card border-primary">
+                                <div class="card-body" id="2">
+                                        <h4 class="card-title">TaskName1</h4>
+                                        <p class="card-text">Task Description1</p>
+                                        <p class="card-text">AssignedTo</p>
+                                        <p class="card-text">DueDate</p>
+                                        <p class="card-text">Status</p>
+					<input type="button" id="markDoneBtn" class="done-button" value="Mark Done">
+                                </div>
+                        </div>      
+              </div> 
+	      </li>
+	      <li class="list-group-item">	
+              <div class="col pl-40">
+                        <div class="card border-primary">
+                                <div class="card-body" id="3">
+                                        <h4 class="card-title">TaskName1</h4>
+                                        <p class="card-text">Task Description1</p>
+                                        <p class="card-text">AssignedTo</p>
+                                        <p class="card-text">DueDate</p>
+                                        <p class="card-text">Status</p>
+					<input type="button" id="markDoneBtn" class="done-button" value="Mark Done">
+                                </div>
+                        </div>      
+              </div> 
+	      </li>
+	      <li class="list-group-item">	
+              <div class="col pl-40">
+                        <div class="card border-primary">
+                                <div class="card-body" id="4">
+                                        <h4 class="card-title">TaskName1</h4>
+                                        <p class="card-text">Task Description1</p>
+                                        <p class="card-text">AssignedTo</p>
+                                        <p class="card-text">DueDate</p>
+                                        <p class="card-text">Status</p>
+					<input type="button" id="markDoneBtn" class="done-button" value="Mark Done">
+                                </div>
+                        </div>      
+              </div> 
+	      </li>-->
+        </div>
+        </ul>
+    
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+    <script src="js/taskManager.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
